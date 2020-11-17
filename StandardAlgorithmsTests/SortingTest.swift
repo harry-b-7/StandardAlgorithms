@@ -1,0 +1,43 @@
+//
+//  SortingTest.swift
+//  StandardAlgorithmsTests
+//
+//  Created by Bell, Harry (MAG) on 13/11/2020.
+//
+
+import XCTest
+
+class SortingTest: XCTestCase {
+    func testBubbleSortWithIntegerArrayReturnsSortedArray() {
+        //arrange
+        let sorting = Sorting()
+        let expected = [1,3,5,8]
+        //act
+        do {
+            let result = try sorting.bubbleSort(data: [5,3,1,8])
+            //assert
+            XCTAssertEqual(result, expected)
+        }catch {
+            print("List empty")
+        }
+        
+        
+        
+    }
+    
+    func testBubbleSortWithVariousIntegerArraysReturnsEachOtherSorted() {
+        //arrange
+        let sorting = Sorting()
+        let testData = [(data: [6,3,1,9,2], expected: [1,2,3,6,9]),(data: [3,34,62,12,5], expected: [3,5,12,34,62]),(data: [], expected: [])]
+        //act
+        do {
+            for test in testData {
+                let result = try sorting.bubbleSort(data: test.data)
+                XCTAssertEqual(result, test.expected)
+            }
+        }catch {
+            print("List empty")
+        }
+        
+    }
+}
