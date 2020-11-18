@@ -17,9 +17,7 @@ class SortingTest: XCTestCase {
             let result = try sorting.bubbleSort(data: [5,3,1,8])
             //assert
             XCTAssertEqual(result, expected)
-        }catch {
-            print("List empty")
-        }
+
         
         
         
