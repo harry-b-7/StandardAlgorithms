@@ -8,10 +8,10 @@
 import Foundation
 
 class UnknownAlgorithms {
-    func addFirstAndLast(data: [Int]) {
-        if data.count = 0 {
+    func addFirstAndLast(data: [Int]) -> Int {
+        if data.count == 0 {
             return 0
-        } else if data.count = 1 {
+        } else if data.count == 1 {
             return data[0]*2
         }else {
             return data[0]+data[-1]
