@@ -42,4 +42,17 @@ class UnknownTest: XCTestCase {
         //assert
         XCTAssertEqual(result,expected)
     }
+    
+    func testFindModeOfSortedListWithSortedIntegerArrayReturnsInteger() {
+        //arrange
+        let unknownAlgorithms = UnknownAlgorithms()
+        let testing = [(data: [1],expected: 1),(data: [1,4,8,12,16,16,16,17,19],expected: 16),(data: [1,2,3,3,4,5,6,6,7,8,9],expected: 3)]
+        //act
+        for test in testing {
+            let result = unknownAlgorithms.findModeOfSortedList(data: test.data)
+            //assert
+            XCTAssertEqual(result, test.expected)
+        }
+        
+    }
 }

@@ -18,4 +18,8 @@ class UnknownAlgorithms {
         }
         
     }
+    
+    func findModeOfSortedList(data: [Int]) -> Int {
+        return 0
+    }
 }
