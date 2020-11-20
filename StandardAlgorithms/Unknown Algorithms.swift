@@ -20,6 +20,31 @@ class UnknownAlgorithms {
     }
     
     func findModeOfSortedList(data: [Int]) -> Int {
-        return 0
+        if data.count == 0 {
+            return 0
+        }
+        var current = 0
+        var run = 0
+        var runOfEach: [[Int]] = []
+        for number in data {
+            if number == current {
+                run += 1
+            } else {
+                runOfEach.append([current,run])
+                current = number
+                run = 1
+            }
+        }
+        runOfEach.append([current,run])
+        print(runOfEach)
+        var mode = 0
+        var largestRun = 0
+        for i in runOfEach {
+            if i[1] > largestRun {
+                mode = i[0]
+                largestRun = i[1]
+            }
+        }
+        return mode
     }
 }
