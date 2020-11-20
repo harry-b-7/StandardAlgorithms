@@ -14,7 +14,7 @@ class UnknownAlgorithms {
         } else if data.count == 1 {
             return data[0]*2
         }else {
-            return data[0]+data[-1]
+            return data[0]+data.last!
         }
         
     }

@@ -17,6 +17,9 @@ class Sorting {
         while isSorted == false {
             var changes: Int = 0
             changes = 0
+            if data.count == 0 || data.count == 1 {
+                return data
+            }
             for i in 1...data.count-1 {
                 if varData[i] < varData[i-1] {
                     temp = varData[i]
