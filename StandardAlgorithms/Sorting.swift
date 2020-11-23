@@ -37,6 +37,7 @@ class Sorting {
         return varData
     }
     
+    
     func mergeSort(data: [Int]) -> [Int] {
         
         func sortList(intList: [Int]) -> [Int] {
@@ -66,9 +67,11 @@ class Sorting {
                 var secondHalfIndex = 0
                 
                 while firstHalfIndex < firstHalfToSort.count && secondHalfIndex < secondHalfToSort.count {
+                    
                     if firstHalfToSort[firstHalfIndex] < secondHalfToSort[secondHalfIndex] {
                         newSortedList.append(firstHalfToSort[firstHalfIndex])
                         firstHalfIndex += 1
+                        
                     } else {
                         newSortedList.append(secondHalfToSort[secondHalfIndex])
                         secondHalfIndex += 1
