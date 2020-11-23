@@ -26,17 +26,26 @@ class Searching {
         let leftMarker = 0
         let rightMarker = list.count-1
         
+        if list.count == 0 {
+            return -1
+        }
+        
         func recursiveFind(list: [Int],leftMarker: Int, rightMarker: Int) -> Int {
-            if list[rightMarker-(leftMarker/2)] < toFind {
-                let newLeftMarker = rightMarker-(leftMarker/2)+1
-                return recursiveFind(list: list,leftMarker: newLeftMarker,rightMarker: rightMarker)
-            } else if list[rightMarker-(leftMarker/2)] > toFind {
-                let newRightMarker = rightMarker-(leftMarker/2)-1
-                return recursiveFind(list: list,leftMarker: leftMarker,rightMarker: newRightMarker)
+            if rightMarker >= leftMarker {
+                if list[rightMarker-(leftMarker/2)] < toFind {
+                    let newLeftMarker = rightMarker-(leftMarker/2)+1
+                    return recursiveFind(list: list,leftMarker: newLeftMarker,rightMarker: rightMarker)
+                } else if list[rightMarker-(leftMarker/2)] > toFind {
+                    let newRightMarker = rightMarker-(leftMarker/2)-1
+                    return recursiveFind(list: list,leftMarker: leftMarker,rightMarker: newRightMarker)
+                } else {
+                    return rightMarker-(leftMarker/2)
+                }
             } else {
-                return rightMarker-(leftMarker/2)
-                
+                return -2
             }
+            
+            
         }
         return recursiveFind(list: list, leftMarker: leftMarker,rightMarker: rightMarker)
     }

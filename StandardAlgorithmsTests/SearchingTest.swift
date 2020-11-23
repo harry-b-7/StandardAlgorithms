@@ -56,6 +56,17 @@ class SearchingTest: XCTestCase {
             XCTAssertEqual(result, test.expected)
         }
     }
+    
+    func testBinarySearchWithSortedArrayAndAnInvalidSearchObjectReturnsNegativeTwo() {
+        //arrange
+        let searching = Searching()
+        let testData = [(data: [1,2,3,4,5,6,7,8],toFind: 9,expected: -2),(data: [2,4,6,8,10,12,14],toFind: 325,expected: -2),(data: [],toFind: 0,expected: -1)]
+        //act
+        for test in testData {
+            let result = searching.binarySearch(list: test.data, toFind: test.toFind)
+            XCTAssertEqual(result, test.expected)
+        }
+    }
 
 }
     
