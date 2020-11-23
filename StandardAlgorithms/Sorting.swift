@@ -36,5 +36,67 @@ class Sorting {
         }
         return varData
     }
+    
+    func mergeSort(data: [Int]) -> [Int] {
+        
+        func sortList(intList: [Int]) -> [Int] {
+            var firstHalf: [Int] = []
+            var secondHalf: [Int] = []
+            
+            if intList.count == 0 {
+                return []
+            }
+            
+            if intList.count != 1 {
+                
+                let firstHalfCount = intList.count/2
+                
+                for i in 0...firstHalfCount-1 {
+                    firstHalf.append(intList[i])
+                }
+                
+                for i in firstHalfCount...intList.count-1 {
+                    secondHalf.append(intList[i])
+                }
+                 
+                let firstHalfToSort = sortList(intList: firstHalf)
+                let secondHalfToSort = sortList(intList: secondHalf)
+                var newSortedList: [Int] = []
+                var firstHalfIndex = 0
+                var secondHalfIndex = 0
+                
+                while firstHalfIndex < firstHalfToSort.count && secondHalfIndex < secondHalfToSort.count {
+                    if firstHalfToSort[firstHalfIndex] < secondHalfToSort[secondHalfIndex] {
+                        newSortedList.append(firstHalfToSort[firstHalfIndex])
+                        firstHalfIndex += 1
+                    } else {
+                        newSortedList.append(secondHalfToSort[secondHalfIndex])
+                        secondHalfIndex += 1
+                        
+                    }
+                }
+                
+                while firstHalfIndex < firstHalfToSort.count {
+                    newSortedList.append(firstHalfToSort[firstHalfIndex])
+                    firstHalfIndex += 1
+                }
+                
+                while secondHalfIndex < secondHalfToSort.count {
+                    newSortedList.append(secondHalfToSort[secondHalfIndex])
+                    secondHalfIndex += 1
+                }
+                
+                return newSortedList
+                
+            } else {
+                return intList
+            }
+        }
+        
+        return sortList(intList: data)
+        
+        
+        
+    }
 }
 
