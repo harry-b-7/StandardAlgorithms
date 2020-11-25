@@ -95,10 +95,38 @@ class Sorting {
                 return intList
             }
         }
-        
         return sortList(intList: data)
-        
-        
+    }
+    
+    func quickSort(data: [Int]) -> [Int] {
+        if data.count == 0 {
+            return []
+        } else {
+            func recursiveQuickSort(list: [Int]) -> [Int] {
+                if list.count == 0 {
+                    return []
+                }
+                let pivot = list[0]
+                var leftList: [Int] = []
+                var rightList: [Int] = []
+                
+                for i in 1..<list.count {
+                    if list[i] < pivot {
+                        leftList.append(list[i])
+                    } else {
+                        rightList.append(list[i])
+                    }
+                }
+                
+                if leftList + [pivot] + rightList == list {
+                    return leftList + [pivot] + recursiveQuickSort(list: rightList) //specific to the way I've done this - the flaw to the rest of it is that when all the other items are larger than the first one it will do nothing.
+                } else {
+                    return recursiveQuickSort(list: leftList) + [pivot] + recursiveQuickSort(list: rightList)
+                }
+            }
+            
+            return recursiveQuickSort(list: data)
+        }
         
     }
 }

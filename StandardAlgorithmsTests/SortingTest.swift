@@ -39,6 +39,28 @@ class SortingTDD: XCTestCase {
             XCTAssertEqual(result, test.expected)
         }
     }
+    
+    func testQuickSortWithIntegerArrayReturnsSortedArray() {
+        //arrange
+        let sorting = Sorting()
+        let testData = [(data: [6,3,1,9,2], expected: [1,2,3,6,9]),(data: [1],expected: [1]),(data: [], expected: []),(data: [14,14,14,14],expected: [14,14,14,14])]
+        //act
+        for test in testData {
+            let result = sorting.quickSort(data: test.data)
+            XCTAssertEqual(result, test.expected)
+        }
+    }
+    
+    func testQuickSortWithIntegerArrayWhereAllOtherItemsAreLargerThanFirstReturnsSortedArray() {
+        //arrange
+        let sorting = Sorting()
+        let testData = [(data: [3,34,62,12,5], expected: [3,5,12,34,62]),(data: [1,3,2],expected: [1,2,3]),(data: [6,12,65,12,14,8], expected: [6,8,12,12,14,65])]
+        //act
+        for test in testData {
+            let result = sorting.quickSort(data: test.data)
+            XCTAssertEqual(result, test.expected)
+        }
+    }
 }
 
 class SortingPerformance: XCTestCase {
