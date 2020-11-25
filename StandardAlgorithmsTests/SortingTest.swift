@@ -7,7 +7,7 @@
 
 import XCTest
 
-class SortingTest: XCTestCase {
+class SortingTDD: XCTestCase {
     func testBubbleSortWithIntegerArrayReturnsSortedArray() {
         //arrange
         let sorting = Sorting()
@@ -37,6 +37,79 @@ class SortingTest: XCTestCase {
         for test in testData {
             let result = sorting.mergeSort(data: test.data)
             XCTAssertEqual(result, test.expected)
+        }
+    }
+}
+
+class SortingPerformance: XCTestCase {
+    
+    func testBubbleSortPerformanceWithNEquals5() {
+        //arrange
+        let sorting = Sorting()
+        //act
+        measure {
+            _ = sorting.bubbleSort(data: [0,2,1,6,9])
+        }
+    }
+    
+    func testBubbleSortPerformanceWithNEquals50() {
+        //arrange
+        let sorting = Sorting()
+        var intList50: [Int] = []
+        for _ in 0..<50 {
+            intList50.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.bubbleSort(data: intList50)
+        }
+    }
+    
+    func testBubbleSortPerformanceWithNEquals500() {
+        //arrange
+        let sorting = Sorting()
+        var intList500: [Int] = []
+        for _ in 0..<500 {
+            intList500.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.bubbleSort(data: intList500)
+        }
+    }
+    
+    func testMergeSortPerformanceWithNEquals5() {
+        //arrange
+        let sorting = Sorting()
+        //act
+        measure {
+            _ = sorting.mergeSort(data: [0,2,1,6,9])
+        }
+    }
+    
+    func testMergeSortPerformanceWithNEquals50() {
+        //arrange
+        let sorting = Sorting()
+        var intList50: [Int] = []
+        for _ in 0..<50 {
+            intList50.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.mergeSort(data: intList50)
+        }
+    }
+    
+    func testMergeSortPerformanceWithNEquals500() {
+        //arrange
+        let sorting = Sorting()
+        var intList500: [Int] = []
+        for _ in 0..<500 {
+            intList500.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.mergeSort(data: intList500)
         }
     }
 }
