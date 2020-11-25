@@ -7,7 +7,7 @@
 
 import XCTest
 
-class SearchingTest: XCTestCase {
+class SearchingTDD: XCTestCase {
 
     func testLinearSearchWithIntegerArrayReturnsIndexOfItem() {
         //arrange
@@ -65,6 +65,89 @@ class SearchingTest: XCTestCase {
         for test in testData {
             let result = searching.binarySearch(list: test.data, toFind: test.toFind)
             XCTAssertEqual(result, test.expected)
+        }
+    }
+    
+    
+}
+
+class SearchingPerformance: XCTestCase {
+    
+    func testLinearSearchPerformanceWithNEquals5() {
+        let searching = Searching()
+        measure {
+             _ = searching.linearSearch(list: [0,2,1,6,9],toFind: 9)
+        }
+    }
+    
+    func testLinearSearchPerformanceWithNEquals50() {
+        let searching = Searching()
+        var intList50: [Int] = []
+        var toFind: Int
+        
+        for _ in 0..<50 {
+            intList50.append(Int.random(in: 0...1000))
+        }
+        
+        toFind = intList50[49]
+
+        measure {
+            _ = searching.linearSearch(list: intList50,toFind: toFind)
+        }
+    }
+    
+    func testLinearSearchPerformanceWithNEquals500() {
+        let searching = Searching()
+        var intList500: [Int] = []
+        var toFind: Int
+        
+        for _ in 0..<500 {
+            intList500.append(Int.random(in: 0...1000))
+        }
+        
+        toFind = intList500[499]
+
+        measure {
+            _ = searching.linearSearch(list: intList500,toFind: toFind)
+        }
+    }
+    
+    func testBinarySearchPerformanceWithNEquals5() {
+        let searching = Searching()
+        measure {
+             _ = searching.binarySearch(list: [0,2,1,6,9],toFind: 9)
+        }
+    }
+    
+    func testBinarySearchPerformanceWithNEquals50() {
+        let searching = Searching()
+        var intList50: [Int] = []
+        var toFind: Int
+        
+        for _ in 0..<50 {
+            intList50.append(Int.random(in: 0...1000))
+        }
+        
+        toFind = intList50[49]
+
+        measure {
+            _ = searching.binarySearch(list: intList50,toFind: toFind)
+        }
+    }
+    
+    func testBinarySearchPerformanceWithNEquals500() {
+        let searching = Searching()
+        var intList500: [Int] = []
+        var toFind: Int
+        
+        for _ in 0..<500 {
+            intList500.append(Int.random(in: 0...1000))
+        }
+        
+        toFind = intList500[499]
+
+        measure {
+            _ = searching.binarySearch(list: intList500,toFind: toFind)
         }
     }
 
