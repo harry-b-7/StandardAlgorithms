@@ -129,5 +129,27 @@ class Sorting {
         }
         
     }
+    
+    func insertionSort(data: [Int]) -> [Int] {
+        if data.count == 0 {
+            return []
+        } else if data.count == 1 {
+            return data
+        }
+        var newList: [Int] = []
+        newList.append(data[0])
+        for i in 1..<data.count {
+            for j in 0..<newList.count {
+                if data[i] > newList[j] {
+                    if j == newList.count-1 {
+                        newList.append(data[i])
+                    }
+                } else {
+                    newList.insert(data[i], at: j)
+                    break
+                }
+            }
+        }
+        return newList
+    }
 }
-

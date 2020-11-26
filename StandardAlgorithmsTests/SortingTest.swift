@@ -61,6 +61,17 @@ class SortingTDD: XCTestCase {
             XCTAssertEqual(result, test.expected)
         }
     }
+    
+    func testInsertionSortWithIntegerArrayReturnsSortedArray() {
+        //arrange
+        let sorting = Sorting()
+        let testData = [(data: [6,3,1,9,2], expected: [1,2,3,6,9]),(data: [1],expected: [1]),(data: [], expected: []),(data: [14,14,14,14,14],expected: [14,14,14,14,14])]
+        //act
+        for test in testData {
+            let result = sorting.insertionSort(data: test.data)
+            XCTAssertEqual(result, test.expected)
+        }
+    }
 }
 
 class SortingPerformance: XCTestCase {
@@ -132,6 +143,76 @@ class SortingPerformance: XCTestCase {
         //act
         measure {
             _ = sorting.mergeSort(data: intList500)
+        }
+    }
+    
+    func testQuickSortPerformanceWithNEquals5() {
+        //arrange
+        let sorting = Sorting()
+        //act
+        measure {
+            _ = sorting.quickSort(data: [0,2,1,6,9])
+        }
+    }
+    
+    func testQuickSortPerformanceWithNEquals50() {
+        //arrange
+        let sorting = Sorting()
+        var intList50: [Int] = []
+        for _ in 0..<50 {
+            intList50.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.quickSort(data: intList50)
+        }
+    }
+    
+    func testQuickSortPerformanceWithNEquals500() {
+        //arrange
+        let sorting = Sorting()
+        var intList500: [Int] = []
+        for _ in 0..<500 {
+            intList500.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.quickSort(data: intList500)
+        }
+    }
+    
+    func testInsertionSortPerformanceWithNEquals5() {
+        //arrange
+        let sorting = Sorting()
+        //act
+        measure {
+            _ = sorting.insertionSort(data: [0,2,1,6,9])
+        }
+    }
+    
+    func testInsertionSortPerformanceWithNEquals50() {
+        //arrange
+        let sorting = Sorting()
+        var intList50: [Int] = []
+        for _ in 0..<50 {
+            intList50.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.insertionSort(data: intList50)
+        }
+    }
+    
+    func testInsertionSortPerformanceWithNEquals500() {
+        //arrange
+        let sorting = Sorting()
+        var intList500: [Int] = []
+        for _ in 0..<500 {
+            intList500.append(Int.random(in: 0...1000))
+        }
+        //act
+        measure {
+            _ = sorting.insertionSort(data: intList500)
         }
     }
 }
